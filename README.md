@@ -13,6 +13,7 @@
  1. Read all the rows from a file or row by row
  2. Write rows into a file or row by row
  3. The flexibility when creating the files: the directory structure is created (aka `mkdirp`)
+ 4. Promises, callbacks and streams :rocket:
 
 
 ## :cloud: Installation
