@@ -7,6 +7,14 @@
 
 > Simple and useful tools to work with CSV files.
 
+### Features
+
+
+ 1. Read all the rows from a file or row by row
+ 2. Write rows into a file or row by row
+ 3. The flexibility when creating the files: the directory structure is created (aka `mkdirp`)
+
+
 ## :cloud: Installation
 
 ```sh
@@ -23,9 +31,25 @@ yarn add csv-it
 
 
 ```js
-const csvIt = require("csv-it");
+const CsvIt = require("csv-it");
 
-console.log(csvIt());
+// Create a stream into a directory which is going to be created
+const testStream = CsvIt.writeAsync(`${__dirname}/csv/some/directory/first.csv`)
+testStream.write({ A: 42 , B: 33 })
+testStream.write({ A: 7 , B: -1 })
+testStream.end()
+
+// Write the rows which are already available
+const SECOND_PATH = `${__dirname}/csv/some/directory/second.csv`
+CsvIt.write(SECOND_PATH, [
+    { A: 42 , B: 33 }
+  , { A: 7 , B: -1 }
+]).then(() => {
+    console.log("Done")
+    return CsvIt.read(SECOND_PATH)
+}).then(res => {
+    console.log(res)
+})
 ```
 
 
