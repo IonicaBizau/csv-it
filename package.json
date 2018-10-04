@@ -49,16 +49,18 @@
     "streamp": "^2.2.8"
   },
   "blah": {
-      "description": [
-          { "h3": "Features" },
-          {
-              "ol": [
-                  "Read all the rows from a file or row by row",
-                  "Write rows into a file or row by row",
-                  "The flexibility when creating the files: the directory structure is created (aka `mkdirp`)",
-                  "Promises, callbacks and streams :rocket:"
-              ]
-          }
-      ]
+    "description": [
+      {
+        "h3": "Features"
+      },
+      {
+        "ol": [
+          "Read all the rows from a file or row by row",
+          "Write rows into a file or row by row",
+          "The flexibility when creating the files: the directory structure is created (aka `mkdirp`)",
+          "Promises, callbacks and streams :rocket:"
+        ]
+      }
+    ]
   }
 }
