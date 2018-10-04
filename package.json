@@ -41,5 +41,11 @@
   },
   "bugs": {
     "url": "https://github.com/IonicaBizau/csv-it/issues"
+  },
+  "dependencies": {
+    "assured": "^1.0.12",
+    "fast-csv": "^2.4.1",
+    "noop6": "^1.0.7",
+    "streamp": "^2.2.8"
   }
 }
