@@ -69,7 +69,7 @@ There are few ways to get help:
 ## :memo: Documentation
 
 
-### `read(file, opts, cb)`
+### `read(file, opts, cb, onData, transformFn)`
 Read a CSV file.
 
 #### Params
@@ -77,6 +77,8 @@ Read a CSV file.
 - **String** `file`: The file path of the CSV file.
 - **Object** `opts`: An object containing the following fields:
 - **Function** `cb`: The callback function.
+- **Function** `onData`: The on data handler. If provided the rows will not be cached in memory.
+- **Function** `transformFn`: The transform handler. Use it for async operations.
 
 #### Return
 - **Promise** A promise resolving to the csv content.
