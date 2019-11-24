@@ -106,8 +106,9 @@ Create a CSV file stream which you can use to write rows manually.
 - **String** `file`: The file path of the CSV file.
 - **Array** `rows`: The rows to write in the CSV file.
 - **Object** `opts`: An object containing the following fields:
-  - `headers` (Array|Boolean): The list of headers or enable the headers.
-  - other fields passed to the `fast-csv` library
+    - `headers` (Array|Boolean): The list of headers or enable the headers.
+    - `append` (Boolean): Wheater to append the data in the CSV file or override it (default: override)
+    - other fields passed to the `fast-csv` library
 - **Function** `cb`: The callback function.
 
 #### Return
