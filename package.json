@@ -44,9 +44,9 @@
   },
   "dependencies": {
     "assured": "^1.0.12",
-    "fast-csv": "^2.4.1",
+    "fast-csv": "^3.4.0",
     "noop6": "^1.0.7",
-    "streamp": "^2.2.8"
+    "streamp": "^3.0.1"
   },
   "blah": {
     "description": [
