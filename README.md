@@ -92,26 +92,79 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 // Create a stream into a directory which is going to be created
-const testStream = CsvIt.writeAsync(`${__dirname}/csv/some/directory/first.csv`)
-testStream.write({ A: 42 , B: 33 })
-testStream.write({ A: 7 , B: -1 })
-testStream.end()
+const testStream = CsvIt.writeAsync(`${__dirname}/csv/some/directory/first.csv`);
+testStream.write({ A: 42, B: 33 });
+testStream.write({ A: 7, B: -1 });
+testStream.end();
 
 // Write the rows which are already available
-const SECOND_PATH = `${__dirname}/csv/some/directory/second.csv`
+const SECOND_PATH = `${__dirname}/csv/some/directory/second.csv`;
 CsvIt.write(SECOND_PATH, [
-    { A: 42 , B: 33 }
-  , { A: 7 , B: -1 }
+    { A: 42, B: 33 },
+    { A: 7, B: -1 }
 ]).then(() => {
-    console.log("Done")
-    return CsvIt.read(SECOND_PATH)
+    console.log("Done");
+    return CsvIt.read(SECOND_PATH);
 }).then(res => {
-    console.log(res)
-})
+    console.log(res);
+});
 ```
 
 
 
+
+
+
+
+
+
+
+
+## :memo: Documentation
+
+
+### `read(file, opts, cb, onData, transformFn)`
+Read a CSV file.
+
+#### Params
+
+- **string** `file`: The file path of the CSV file.
+- **object** `opts`: An object containing the following fields:
+- **Function** `cb`: The callback function.
+- **Function** `onData`: The on data handler. If provided the rows will not be cached in memory.
+- **Function** `transformFn`: The transform handler. Use it for async operations.
+
+#### Return
+- **Promise** A promise resolving to the csv content.
+
+### `write(file, rows, opts, cb)`
+Write the rows in the CSV file.
+
+#### Params
+
+- **string** `file`: The file path of the CSV file.
+- **Array** `rows`: The rows to write in the CSV file.
+- **object** `opts`: An object containing the following fields:
+  - `headers` (Array|Boolean): The list of headers or enable the headers.
+  - other fields passed to the `fast-csv` library
+- **Function** `cb`: The callback function.
+
+#### Return
+- **Promise** A promise resolving to the csv content.
+
+### `writeAsync(file, opts, cb)`
+Create a CSV file stream which you can use to write rows manually.
+
+#### Params
+
+- **string** `file`: The file path of the CSV file.
+- **object** `opts`: An object containing the following fields:     - `headers` (Array|Boolean): The list of headers or enable the headers.
+    - `append` (Boolean): Wheater to append the data in the CSV file or override it (default: override)
+    - other fields passed to the `fast-csv` library
+- **Function** `cb`: The callback function.
+
+#### Return
+- **Stream** The CSV stream you can write to. Note you have to end it.
 
 
 
@@ -130,60 +183,6 @@ There are few ways to get help:
  1. Please [post questions on Stack Overflow](https://stackoverflow.com/questions/ask). You can open issues with questions, as long you add a link to your Stack Overflow question.
  2. For bug reports and feature requests, open issues. :bug:
  3. For direct and quick help, you can [use Codementor](https://www.codementor.io/johnnyb). :rocket:
-
-
-
-
-
-
-
-## :memo: Documentation
-
-
-### `read(file, opts, cb, onData, transformFn)`
-Read a CSV file.
-
-#### Params
-
-- **String** `file`: The file path of the CSV file.
-- **Object** `opts`: An object containing the following fields:
-- **Function** `cb`: The callback function.
-- **Function** `onData`: The on data handler. If provided the rows will not be cached in memory.
-- **Function** `transformFn`: The transform handler. Use it for async operations.
-
-#### Return
-- **Promise** A promise resolving to the csv content.
-
-### `write(file, rows, opts, cb)`
-Write the rows in the CSV file.
-
-#### Params
-
-- **String** `file`: The file path of the CSV file.
-- **Array** `rows`: The rows to write in the CSV file.
-- **Object** `opts`: An object containing the following fields:
-  - `headers` (Array|Boolean): The list of headers or enable the headers.
-  - other fields passed to the `fast-csv` library
-- **Function** `cb`: The callback function.
-
-#### Return
-- **Promise** A promise resolving to the csv content.
-
-### `writeAsync(file, rows, opts, cb)`
-Create a CSV file stream which you can use to write rows manually.
-
-#### Params
-
-- **String** `file`: The file path of the CSV file.
-- **Array** `rows`: The rows to write in the CSV file.
-- **Object** `opts`: An object containing the following fields:
-    - `headers` (Array|Boolean): The list of headers or enable the headers.
-    - `append` (Boolean): Wheater to append the data in the CSV file or override it (default: override)
-    - other fields passed to the `fast-csv` library
-- **Function** `cb`: The callback function.
-
-#### Return
-- **Stream** The CSV stream you can write to. Note you have to end it.
 
 
 
@@ -232,14 +231,6 @@ Thanks! :heart:
 
 
 
-
-
-
-## :dizzy: Where is this library used?
-If you are using this library in one of your projects, add it in this list. :sparkles:
-
- - `ekoheat-boiler-parser`
- - `spreadsheet-parser`
 
 
 
