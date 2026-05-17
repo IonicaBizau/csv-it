@@ -1,21 +1,25 @@
-"use strict";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
 
-const CsvIt = require("../lib");
+import CsvIt from "../lib/index.js";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 // Create a stream into a directory which is going to be created
-const testStream = CsvIt.writeAsync(`${__dirname}/csv/some/directory/first.csv`)
-testStream.write({ A: 42 , B: 33 })
-testStream.write({ A: 7 , B: -1 })
-testStream.end()
+const testStream = CsvIt.writeAsync(`${__dirname}/csv/some/directory/first.csv`);
+testStream.write({ A: 42, B: 33 });
+testStream.write({ A: 7, B: -1 });
+testStream.end();
 
 // Write the rows which are already available
-const SECOND_PATH = `${__dirname}/csv/some/directory/second.csv`
+const SECOND_PATH = `${__dirname}/csv/some/directory/second.csv`;
 CsvIt.write(SECOND_PATH, [
-    { A: 42 , B: 33 }
-  , { A: 7 , B: -1 }
+    { A: 42, B: 33 },
+    { A: 7, B: -1 }
 ]).then(() => {
-    console.log("Done")
-    return CsvIt.read(SECOND_PATH)
+    console.log("Done");
+    return CsvIt.read(SECOND_PATH);
 }).then(res => {
-    console.log(res)
-})
+    console.log(res);
+});

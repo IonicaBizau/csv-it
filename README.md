@@ -83,7 +83,13 @@ yarn add csv-it
 
 
 ```js
-const CsvIt = require("csv-it");
+import path from "node:path";
+import { fileURLToPath } from "node:url";
+
+import CsvIt from "csv-it";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 // Create a stream into a directory which is going to be created
 const testStream = CsvIt.writeAsync(`${__dirname}/csv/some/directory/first.csv`)

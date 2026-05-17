@@ -15,7 +15,9 @@
   ],
   "license": "MIT",
   "version": "2.0.1",
+  "type": "module",
   "main": "lib/index.js",
+  "exports": "./lib/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -46,9 +48,8 @@
     "url": "https://github.com/IonicaBizau/csv-it/issues"
   },
   "dependencies": {
-    "assured": "^1.0.12",
-    "fast-csv": "^4.3.6",
-    "noop6": "^1.0.7",
+    "assured": "^2.0.0",
+    "fast-csv": "^5.0.7",
     "streamp": "^3.0.1"
   },
   "blah": {
